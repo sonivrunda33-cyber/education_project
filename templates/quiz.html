@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Adaptive Quiz - SkillTwin AI</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        ✦ SkillTwin AI
+    </div>
+
+    <a href="{{ url_for('dashboard') }}">
+        Dashboard
+    </a>
+
+</nav>
+
+
+<main class="quiz-page">
+
+    <div class="page-heading">
+
+        <div class="badge">
+            ADAPTIVE AI QUIZ
+        </div>
+
+        <h1>
+            Test Your Knowledge
+        </h1>
+
+        <p>
+            Choose a topic and challenge yourself.
+        </p>
+
+    </div>
+
+
+    <div
+        id="topicSelection"
+        class="glass-card topic-selection">
+
+        <h2>
+            Select Topic
+        </h2>
+
+        <button
+            class="btn primary topic-btn"
+            data-topic="Python">
+            Python
+        </button>
+
+        <button
+            class="btn secondary topic-btn"
+            data-topic="OOP">
+            OOP
+        </button>
+
+    </div>
+
+
+    <div
+        id="quizContainer"
+        class="glass-card hidden">
+
+        <div id="quizQuestion">
+        </div>
+
+        <button
+            id="nextQuestion"
+            class="btn primary">
+            NEXT
+        </button>
+
+    </div>
+
+
+    <div
+        id="quizResult"
+        class="glass-card hidden">
+    </div>
+
+</main>
+
+
+<script src="{{ url_for(
+    'static',
+    filename='js/quiz.js'
+) }}"></script>
+
+</body>
+
+</html>

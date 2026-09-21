@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin - SkillTwin AI</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        ✦ SkillTwin AI
+    </div>
+
+    <a href="{{ url_for('logout') }}">
+        Logout
+    </a>
+
+</nav>
+
+
+<main class="admin-page">
+
+    <div class="page-heading">
+
+        <div class="badge">
+            ADMIN CONTROL CENTER
+        </div>
+
+        <h1>
+            SkillTwin AI Analytics
+        </h1>
+
+    </div>
+
+
+    <div class="stats-grid">
+
+        <div class="stat-card glass-card">
+
+            <span>
+                Total Students
+            </span>
+
+            <strong>
+                {{ users|length }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card glass-card">
+
+            <span>
+                Assessments
+            </span>
+
+            <strong>
+                {{ total_assessments }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card glass-card">
+
+            <span>
+                Average Score
+            </span>
+
+            <strong>
+                {{ average_score }}%
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="glass-card admin-table">
+
+        <h2>
+            Registered Users
+        </h2>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+
+                        <th>
+                            Created
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for user in users %}
+
+                    <tr>
+
+                        <td>
+                            {{ user.id }}
+                        </td>
+
+                        <td>
+                            {{ user.name }}
+                        </td>
+
+                        <td>
+                            {{ user.email }}
+                        </td>
+
+                        <td>
+                            {{ user.role }}
+                        </td>
+
+                        <td>
+                            {{ user.created_at }}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

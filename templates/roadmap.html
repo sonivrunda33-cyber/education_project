@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillTwinAI - Roadmap</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/animations.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/responsive.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        SkillTwin<span>AI</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('roadmap') }}">
+            Roadmap
+        </a>
+
+        <a href="{{ url_for('assessment') }}">
+            Assessment
+        </a>
+
+        <a href="{{ url_for('quiz') }}">
+            Quiz
+        </a>
+
+        <a href="{{ url_for('tutor') }}">
+            AI Tutor
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- MAIN CONTENT -->
+
+<main class="dashboard-container">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header animate-up">
+
+        <p class="eyebrow">
+            AI LEARNING SYSTEM
+        </p>
+
+        <h1>
+            Your Learning Roadmap
+        </h1>
+
+        <p>
+            Your personalized learning path based on
+            your assessment performance.
+        </p>
+
+    </section>
+
+
+    {% if roadmap and roadmap.steps %}
+
+
+        <!-- FOCUS CARD -->
+
+        <section class="dashboard-card animate-up">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        NEXT PRIORITY
+                    </p>
+
+                    <h2>
+                        {{ roadmap.focus }}
+                    </h2>
+
+                </div>
+
+                <div class="roadmap-badge">
+                    AI GENERATED
+                </div>
+
+            </div>
+
+            <p>
+                {{ roadmap.message }}
+            </p>
+
+        </section>
+
+
+        <!-- ROADMAP STEPS -->
+
+        <section class="roadmap-section">
+
+
+            {% for step in roadmap.steps %}
+
+            <div class="timeline-item animate-up">
+
+
+                <!-- STEP NUMBER -->
+
+                <div class="timeline-number">
+
+                    {{ step.step }}
+
+                </div>
+
+
+                <!-- STEP CARD -->
+
+                <div class="timeline-card">
+
+
+                    <div class="timeline-top">
+
+                        <div>
+
+                            <span class="skill-level">
+
+                                {{ step.level }}
+
+                            </span>
+
+                            <h2>
+
+                                {{ step.skill }}
+
+                            </h2>
+
+                        </div>
+
+
+                        <strong>
+
+                            {{ step.score }}%
+
+                        </strong>
+
+                    </div>
+
+
+                    <!-- PROGRESS BAR -->
+
+                    <div class="progress-container">
+
+                        <div
+                        class="progress-bar"
+                        data-progress="{{ step.score }}"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- ACTION -->
+
+                    <p class="roadmap-action">
+
+                        {{ step.action }}
+
+                    </p>
+
+
+                    <!-- TASKS -->
+
+                    {% if step.tasks %}
+
+                    <div class="roadmap-tasks">
+
+                        {% for task in step.tasks %}
+
+                        <div class="roadmap-task">
+
+                            <span class="task-icon">
+                                ✓
+                            </span>
+
+                            <span>
+                                {{ task }}
+                            </span>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    {% endif %}
+
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+
+        </section>
+
+
+    {% else %}
+
+
+        <!-- EMPTY STATE -->
+
+        <section class="dashboard-card empty-state animate-up">
+
+            <div class="empty-icon">
+                AI
+            </div>
+
+            <h2>
+                Your Roadmap Is Not Ready Yet
+            </h2>
+
+            <p>
+                Complete your assessment first.
+                SkillTwinAI will analyze your skills
+                and generate your personalized roadmap.
+            </p>
+
+
+            <a
+                href="{{ url_for('assessment') }}"
+                class="btn-primary"
+            >
+                Start Assessment
+            </a>
+
+        </section>
+
+
+    {% endif %}
+
+
+</main>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/roadmap.js') }}"></script>
+
+
+</body>
+
+</html>

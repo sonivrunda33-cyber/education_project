@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AI Tutor - SkillTwin AI</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        ✦ SkillTwin AI
+    </div>
+
+    <a href="{{ url_for('dashboard') }}">
+        Dashboard
+    </a>
+
+</nav>
+
+
+<main class="tutor-page">
+
+    <div class="page-heading">
+
+        <div class="badge">
+            AI LEARNING ASSISTANT
+        </div>
+
+        <h1>
+            SkillTwin AI Tutor
+        </h1>
+
+        <p>
+            Ask questions and learn
+            programming concepts.
+        </p>
+
+    </div>
+
+
+    <div class="glass-card chat-container">
+
+        <div id="chatMessages"
+             class="chat-messages">
+
+            <div class="message ai">
+
+                <div class="avatar">
+                    🤖
+                </div>
+
+                <div class="message-content">
+
+                    Hey! 👋
+
+                    I'm your SkillTwin AI Tutor.
+
+                    Ask me about Python,
+                    loops, functions, OOP
+                    or programming.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-input">
+
+            <input
+                id="messageInput"
+                type="text"
+                placeholder="Ask something..."
+            >
+
+            <button
+                id="sendBtn"
+                class="btn primary">
+                SEND
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="{{ url_for(
+    'static',
+    filename='js/tutor.js'
+) }}"></script>
+
+</body>
+
+</html>
